@@ -1,8 +1,7 @@
 "use client";
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { useRef, useState } from "react";
+import { motion } from "framer-motion";
 import Confetti from "react-confetti";
-import Image from "next/image";
 
 function CakeSVG({ blownOut }: { blownOut: boolean }) {
   return (
@@ -41,10 +40,10 @@ function CakeSVG({ blownOut }: { blownOut: boolean }) {
 
       <image
         href="/indiacouncil.png"
-        x="160"
-        y="130"
-        width="80"
-        height="100"
+        x="140"
+        y="110"
+        width="120"
+        height="140"
         preserveAspectRatio="xMidYMid meet"
       />
 
@@ -70,6 +69,12 @@ function CakeSVG({ blownOut }: { blownOut: boolean }) {
 
 export default function HomePage() {
   const [blownOut, setBlownOut] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  const handleBlowout = () => {
+    setBlownOut(true);
+    audioRef.current?.play();
+  };
 
   return (
     <main className="min-h-screen bg-gradient-to-bl from-pink-300 to-purple-400 text-white flex flex-col items-center justify-center p-10">
@@ -81,6 +86,8 @@ export default function HomePage() {
         className="mb-10 w-1/3 md:w-1/4"
       /> */}
 
+      <audio ref={audioRef} preload="auto" loop={true} src="/clap.mp3" />
+
       <div className="flex flex-col items-center justify-center text-black">
         <h1 className="text-2xl md:text-4xl mb-6 text-center">
           IEEE WiE India Council Celebrates
@@ -88,7 +95,7 @@ export default function HomePage() {
         <h1 className="text-xl md:text-3xl font-bold">🎉 IEEE WiE Day 🎉</h1>
       </div>
 
-      <div className="cursor-pointer" onClick={() => setBlownOut(true)}>
+      <div className="cursor-pointer" onClick={handleBlowout}>
         <CakeSVG blownOut={blownOut} />
       </div>
 
