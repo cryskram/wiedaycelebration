@@ -40,7 +40,7 @@ function CakeSVG({ blownOut }: { blownOut: boolean }) {
       </g>
 
       <image
-        href="/wie.png"
+        href="/indiacouncil.png"
         x="160"
         y="130"
         width="80"
