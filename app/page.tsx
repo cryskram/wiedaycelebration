@@ -72,7 +72,7 @@ export default function HomePage() {
   const [blownOut, setBlownOut] = useState(false);
 
   return (
-    <main className="min-h-screen bg-purple-300 text-white flex flex-col items-center justify-center p-10">
+    <main className="min-h-screen bg-gradient-to-bl from-pink-300 to-purple-400 text-white flex flex-col items-center justify-center p-10">
       {/* <Image
         src="/wie.png"
         width={1000}
